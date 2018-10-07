@@ -1,0 +1,14 @@
+prefix=/home/rigaya/build_ffmpeg_dll/ffmpeg_dll/tmp/x86
+exec_prefix=${prefix}
+libdir=/home/rigaya/build_ffmpeg_dll/ffmpeg_dll/tmp/x86/lib
+includedir=/home/rigaya/build_ffmpeg_dll/ffmpeg_dll/tmp/x86/include
+
+Name: libswresample
+Description: FFmpeg audio resampling library
+Version: 3.2.100
+Requires: 
+Requires.private: libavutil >= 56.18.102
+Conflicts:
+Libs: -L${libdir}  -lswresample 
+Libs.private: -lm -lsoxr
+Cflags: -I${includedir}

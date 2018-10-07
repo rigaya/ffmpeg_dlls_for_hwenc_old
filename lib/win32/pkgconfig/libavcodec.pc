@@ -1,0 +1,14 @@
+prefix=/home/rigaya/build_ffmpeg_dll/ffmpeg_dll/tmp/x86
+exec_prefix=${prefix}
+libdir=/home/rigaya/build_ffmpeg_dll/ffmpeg_dll/tmp/x86/lib
+includedir=/home/rigaya/build_ffmpeg_dll/ffmpeg_dll/tmp/x86/include
+
+Name: libavcodec
+Description: FFmpeg codec library
+Version: 58.19.102
+Requires: 
+Requires.private: libswresample >= 3.2.100, libavutil >= 56.18.102
+Conflicts:
+Libs: -L${libdir}  -lavcodec 
+Libs.private: -pthread -liconv -lm -LC:/ProgramAnother/msys64/mingw32/lib -lz -lmp3lame -lm -LC:/ProgramAnother/msys64/home/rigaya/build_ffmpeg_dll/x86/build/lib -lopus -LC:/ProgramAnother/msys64/home/rigaya/build_ffmpeg_dll/x86/build/lib -lspeex -ltwolame -LC:/ProgramAnother/msys64/home/rigaya/build_ffmpeg_dll/x86/build/lib -lvorbis -logg -LC:/ProgramAnother/msys64/home/rigaya/build_ffmpeg_dll/x86/build/lib -lvorbisenc -lvorbis -logg -lwavpack
+Cflags: -I${includedir}

@@ -1,0 +1,14 @@
+prefix=/home/rigaya/build_ffmpeg_dll/ffmpeg_dll/tmp/x86
+exec_prefix=${prefix}
+libdir=/home/rigaya/build_ffmpeg_dll/ffmpeg_dll/tmp/x86/lib
+includedir=/home/rigaya/build_ffmpeg_dll/ffmpeg_dll/tmp/x86/include
+
+Name: libavutil
+Description: FFmpeg utility library
+Version: 56.18.102
+Requires: 
+Requires.private: 
+Conflicts:
+Libs: -L${libdir}  -lavutil 
+Libs.private: -pthread -lm -luser32 -lbcrypt
+Cflags: -I${includedir}
