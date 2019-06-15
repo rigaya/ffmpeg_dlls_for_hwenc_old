@@ -5,10 +5,10 @@ includedir=/home/rigaya/build_ffmpeg_dll/ffmpeg_dll/tmp/x64/include
 
 Name: libavcodec
 Description: FFmpeg codec library
-Version: 58.19.102
+Version: 58.52.102
 Requires: 
-Requires.private: libswresample >= 3.2.100, libavutil >= 56.18.102
+Requires.private: libswresample >= 3.4.100, libavutil >= 56.28.100
 Conflicts:
 Libs: -L${libdir}  -lavcodec 
-Libs.private: -pthread -liconv -lm -LC:/ProgramAnother/msys64/mingw64/lib -lz -lmp3lame -lm -LC:/ProgramAnother/msys64/home/rigaya/build_ffmpeg_dll/x64/build/lib -lopus -LC:/ProgramAnother/msys64/home/rigaya/build_ffmpeg_dll/x64/build/lib -lspeex -ltwolame -LC:/ProgramAnother/msys64/home/rigaya/build_ffmpeg_dll/x64/build/lib -lvorbis -logg -LC:/ProgramAnother/msys64/home/rigaya/build_ffmpeg_dll/x64/build/lib -lvorbisenc -lvorbis -logg -lwavpack
+Libs.private: -pthread -liconv -lm -LC:/ProgramAnother/msys64/home/rigaya/build_ffmpeg_dll/x64/build/lib -LC:/ProgramAnother/msys64/mingw64/lib -lm -laribb24 -lpng16 -lz -LC:/ProgramAnother/msys64/mingw64/lib -lz -lmp3lame -lm -LC:/ProgramAnother/msys64/home/rigaya/build_ffmpeg_dll/x64/build/lib -lopus -lm -LC:/ProgramAnother/msys64/home/rigaya/build_ffmpeg_dll/x64/build/lib -lspeex -lm -ltwolame -LC:/ProgramAnother/msys64/home/rigaya/build_ffmpeg_dll/x64/build/lib -lvorbis -lm -logg -LC:/ProgramAnother/msys64/home/rigaya/build_ffmpeg_dll/x64/build/lib -lvorbisenc -lvorbis -lm -logg -lwavpack -lole32 -luser32
 Cflags: -I${includedir}

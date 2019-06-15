@@ -5,10 +5,10 @@ includedir=/home/rigaya/build_ffmpeg_dll/ffmpeg_dll/tmp/x64/include
 
 Name: libavformat
 Description: FFmpeg container format library
-Version: 58.15.100
+Version: 58.27.103
 Requires: 
-Requires.private: libavcodec >= 58.19.102, libswresample >= 3.2.100, libavutil >= 56.18.102
+Requires.private: libavcodec >= 58.52.102, libswresample >= 3.4.100, libavutil >= 56.28.100
 Conflicts:
 Libs: -L${libdir}  -lavformat 
-Libs.private: -lm -lbz2 -LC:/ProgramAnother/msys64/mingw64/lib -lz -lsecur32 -lws2_32
+Libs.private: -lm -lbz2 -LC:/ProgramAnother/msys64/home/rigaya/build_ffmpeg_dll/x64/build/lib -LC:/ProgramAnother/msys64/mingw64/lib -LC:/ProgramAnother/msys64/home/rigaya/build_ffmpeg_dll/x64/build/lib -L/home/rigaya/build_ffmpeg_dll/x64/build/lib -lbluray -lgdi32 -lxml2 -lz -liconv -lws2_32 -lfreetype -liconv -lpng -lbz2 -lz -lbz2 -lpng -lz -LC:/ProgramAnother/msys64/mingw64/lib -lz -lsecur32 -lws2_32
 Cflags: -I${includedir}
