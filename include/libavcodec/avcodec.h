@@ -456,6 +456,10 @@ enum AVCodecID {
     AV_CODEC_ID_ARBC,
     AV_CODEC_ID_AGM,
     AV_CODEC_ID_LSCR,
+    AV_CODEC_ID_VP4,
+    AV_CODEC_ID_IMM5,
+    AV_CODEC_ID_MVDV,
+    AV_CODEC_ID_MVHA,
 
     /* various PCM "codecs" */
     AV_CODEC_ID_FIRST_AUDIO = 0x10000,     ///< A dummy id pointing at the start of audio codecs
@@ -651,6 +655,8 @@ enum AVCodecID {
     AV_CODEC_ID_SBC,
     AV_CODEC_ID_ATRAC9,
     AV_CODEC_ID_HCOM,
+    AV_CODEC_ID_ACELP_KELVIN,
+    AV_CODEC_ID_MPEGH_3D_AUDIO,
 
     /* subtitle codecs */
     AV_CODEC_ID_FIRST_SUBTITLE = 0x17000,          ///< A dummy ID pointing at the start of subtitle codecs.
@@ -687,6 +693,7 @@ enum AVCodecID {
     AV_CODEC_ID_TTF = 0x18000,
 
     AV_CODEC_ID_SCTE_35, ///< Contain timestamp estimated through PCR of program stream.
+    AV_CODEC_ID_EPG,
     AV_CODEC_ID_BINTEXT    = 0x18800,
     AV_CODEC_ID_XBIN,
     AV_CODEC_ID_IDF,
@@ -2056,15 +2063,19 @@ typedef struct AVCodecContext {
 
     /**
      * custom intra quantization matrix
-     * - encoding: Set by user, can be NULL.
-     * - decoding: Set by libavcodec.
+     * Must be allocated with the av_malloc() family of functions, and will be freed in
+     * avcodec_free_context().
+     * - encoding: Set/allocated by user, freed by libavcodec. Can be NULL.
+     * - decoding: Set/allocated/freed by libavcodec.
      */
     uint16_t *intra_matrix;
 
     /**
      * custom inter quantization matrix
-     * - encoding: Set by user, can be NULL.
-     * - decoding: Set by libavcodec.
+     * Must be allocated with the av_malloc() family of functions, and will be freed in
+     * avcodec_free_context().
+     * - encoding: Set/allocated by user, freed by libavcodec. Can be NULL.
+     * - decoding: Set/allocated/freed by libavcodec.
      */
     uint16_t *inter_matrix;
 
@@ -3365,6 +3376,14 @@ typedef struct AVCodecContext {
      * - encoding: unused
      */
     int discard_damaged_percentage;
+
+    /**
+     * The number of samples per frame to maximally accept.
+     *
+     * - decoding: set by user
+     * - encoding: set by user
+     */
+    int64_t max_samples;
 } AVCodecContext;
 
 #if FF_API_CODEC_GET_SET
@@ -4417,7 +4436,7 @@ int av_grow_packet(AVPacket *pkt, int grow_by);
  * Initialize a reference-counted packet from av_malloc()ed data.
  *
  * @param pkt packet to be initialized. This function will set the data, size,
- *        buf and destruct fields, all others are left untouched.
+ *        and buf fields, all others are left untouched.
  * @param data Data allocated by av_malloc() to be used as packet data. If this
  *        function returns successfully, the data is owned by the underlying AVBuffer.
  *        The caller may not access the data through other means.
@@ -5930,11 +5949,13 @@ int av_bsf_init(AVBSFContext *ctx);
  *
  * @param pkt the packet to filter. The bitstream filter will take ownership of
  * the packet and reset the contents of pkt. pkt is not touched if an error occurs.
- * This parameter may be NULL, which signals the end of the stream (i.e. no more
- * packets will be sent). That will cause the filter to output any packets it
- * may have buffered internally.
+ * If pkt is empty (i.e. NULL, or pkt->data is NULL and pkt->side_data_elems zero),
+ * it signals the end of the stream (i.e. no more non-empty packets will be sent;
+ * sending more empty packets does nothing) and will cause the filter to output
+ * any packets it may have buffered internally.
  *
- * @return 0 on success, a negative AVERROR on error.
+ * @return 0 on success, a negative AVERROR on error. This function never fails if
+ * pkt is empty.
  */
 int av_bsf_send_packet(AVBSFContext *ctx, AVPacket *pkt);
 

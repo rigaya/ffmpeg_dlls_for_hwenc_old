@@ -57,6 +57,7 @@ EXPORTS
     av_buffer_get_ref_count
     av_buffer_is_writable
     av_buffer_make_writable
+    av_buffer_pool_buffer_get_opaque
     av_buffer_pool_get
     av_buffer_pool_init
     av_buffer_pool_init2
@@ -133,6 +134,7 @@ EXPORTS
     av_encryption_init_info_free
     av_encryption_init_info_get_side_data
     av_escape
+    av_expr_count_vars
     av_expr_eval
     av_expr_free
     av_expr_parse

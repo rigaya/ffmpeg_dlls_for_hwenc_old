@@ -5,9 +5,9 @@ includedir=/home/rigaya/build_ffmpeg_dll/ffmpeg_dll/tmp/x64/include
 
 Name: libavdevice
 Description: FFmpeg device handling library
-Version: 58.7.100
+Version: 58.9.101
 Requires: 
-Requires.private: libavfilter >= 7.55.100, libavformat >= 58.27.103, libavcodec >= 58.52.102, libswresample >= 3.4.100, libavutil >= 56.28.100
+Requires.private: libavfilter >= 7.69.101, libavformat >= 58.35.101, libavcodec >= 58.65.100, libswresample >= 3.6.100, libavutil >= 56.37.100
 Conflicts:
 Libs: -L${libdir}  -lavdevice 
 Libs.private: -lpsapi -lole32 -lstrmiids -luuid -loleaut32 -lshlwapi -lgdi32 -lm -lvfw32
