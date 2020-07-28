@@ -132,6 +132,7 @@ EXPORTS
     avio_pause
     avio_print_string_array
     avio_printf
+    avio_protocol_get_class
     avio_put_str
     avio_put_str16be
     avio_put_str16le

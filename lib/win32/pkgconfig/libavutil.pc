@@ -5,7 +5,7 @@ includedir=/home/rigaya/build_ffmpeg_dll/ffmpeg_dll/tmp/x86/include
 
 Name: libavutil
 Description: FFmpeg utility library
-Version: 56.37.100
+Version: 56.57.100
 Requires: 
 Requires.private: 
 Conflicts:
